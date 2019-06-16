@@ -1,0 +1,34 @@
+syntax = "proto3";
+package boldapi.pre;
+option go_package = "pb";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
+
+message GetProductByIDRequest{
+  int64 id = 1;
+}
+
+message GetProductResponse{
+  Product product = 1;
+}
+
+message Product {
+  int64 id = 1;
+  string name = 2;
+  string price = 3;
+  string currency = 4;
+  google.protobuf.Timestamp created_at = 19 [(gogoproto.stdtime) = true];
+  google.protobuf.Timestamp updated_at = 20 [(gogoproto.stdtime) = true];
+}
+
+service ProductService {
+  rpc GetProductByID(GetProductByIDRequest) returns (GetProductResponse) {
+    option (google.api.http) = {
+      get: "/api/products/{id}"
+    };
+  }
+}

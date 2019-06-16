@@ -1,0 +1,129 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "service.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/shops/{id}": {
+      "get": {
+        "operationId": "GetShopByID",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/preGetShopResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "PRService"
+        ]
+      }
+    },
+    "/api/{version}/shops/count": {
+      "get": {
+        "operationId": "GetShopCount",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/preGetShopCountResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "PRService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "preGetShopCountResponse": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "preGetShopResponse": {
+      "type": "object",
+      "properties": {
+        "shop": {
+          "$ref": "#/definitions/preShop"
+        }
+      }
+    },
+    "preShop": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "platform_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "shop_identifier": {
+          "type": "string"
+        },
+        "shop_domain": {
+          "type": "string"
+        },
+        "custom_domain": {
+          "type": "string"
+        },
+        "is_active": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "tomatoken": {
+          "type": "string"
+        },
+        "requires_bust": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  }
+}

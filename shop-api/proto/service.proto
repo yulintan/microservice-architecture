@@ -1,0 +1,44 @@
+syntax = "proto3";
+package boldapi.pre;
+option go_package = "pb";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
+message GetShopCountRequest {
+}
+
+message GetShopCountResponse {
+  int32 count = 1;
+}
+
+message GetShopByIDRequest{
+  int64 id = 1;
+}
+
+message GetShopResponse{
+  Shop shop = 1;
+}
+
+message Shop {
+  int64 id = 1;
+  string shop_domain = 2;
+  string currency = 3;
+  google.protobuf.Timestamp created_at = 19 [(gogoproto.stdtime) = true];
+  google.protobuf.Timestamp updated_at = 20 [(gogoproto.stdtime) = true];
+}
+
+service ShopService {
+  rpc GetShopCount(GetShopCountRequest) returns (GetShopCountResponse) {
+    option (google.api.http) = {
+      get: "/api/shops/count"
+    };
+  }
+  rpc GetShopByID(GetShopByIDRequest) returns (GetShopResponse) {
+    option (google.api.http) = {
+      get: "/api/shops/{id}"
+    };
+  }
+}
