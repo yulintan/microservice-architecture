@@ -117,7 +117,7 @@ func RegisterProductServiceHandlerClient(ctx context.Context, mux *runtime.Serve
 }
 
 var (
-	pattern_ProductService_GetProductByID_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"api", "products", "id"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_ProductService_GetProductByID_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"api", "products", "id"}, ""))
 )
 
 var (

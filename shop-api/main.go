@@ -5,7 +5,6 @@ import (
 	"net"
 	"net/http"
 
-	_ "github.com/go-sql-driver/mysql"
 	"github.com/golang/glog"
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 	"github.com/yulintan/microservice-architecture/lib/grpclib"
